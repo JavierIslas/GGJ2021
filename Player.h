@@ -7,10 +7,11 @@
 class Player: public GameCharacter{
 
 public:
-    Room currentRoom, previousRoom;
+    Room *currentRoom;
+    Room *previousRoom;
     vector<Item> inventary;
 
-    Player(string, int, int, int);
+    Player(string="", int=0, int=0, int=0);
 
     void addItem(Item);
 
@@ -18,7 +19,7 @@ public:
 
     void lootRoom(Room *);
 
-    void chageRoom(Room);
+    void chageRoom(Room *);
 
 };
 #endif
