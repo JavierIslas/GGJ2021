@@ -50,10 +50,10 @@ void GameMode::handleEmptyRoom(Room *room){
 }
 
 void GameMode::handleLootRoom(Room *room){
-	cout << "You find a chest";
+	cout << "You find a chest\n";
 	string actions[] = {"1: Loot Chest","2: Move to next room"};
 	while(true){
-		printAction(1, actions);
+		printAction(2, actions);
 		string input;
 		cin >> input;
 		if(input == "1"){
@@ -92,8 +92,7 @@ void GameMode::handleFightAction(GameCharacter *cE){
 		cin >> input;
 		if(input == "1"){
 			int damage = cE->takeDamage(player.attack);
-			cout << "Your attack does " << damage << " to " << cE->name;
-			return;
+			cout << "Your attack does " << damage << " to " << cE->name << "\n";
 		} else if(input == "2"){
 			player.changeRoom(player.previousRoom);
 			enterRoom(player.currentRoom);
@@ -101,15 +100,15 @@ void GameMode::handleFightAction(GameCharacter *cE){
 		} else cout << "Invalid choise.\n";
 
 		if(cE->bIsDead()){
-			cout << "Enemy defeated " << cE->name;
+			cout << "Enemy defeated " << cE->name << "\n";
 			player.increaseStat(2, 1, 1);
 			player.currentRoom->clearEnemies();
 			return;
 		}else {
 			int damage = player.takeDamage(cE->attack);
-			cout << cE->name << "'s attack does " << damage << " to you";
+			cout << cE->name << "'s attack does " << damage << " to you\n";
 			if(player.bIsDead()){
-				cout << "You died";
+				cout << "You died\n";
 				return;
 			}
 		}
@@ -138,7 +137,7 @@ void GameMode::handleMovement(Room *room){
 			}else cout << "Invalid choise.\n";
 		}else if(room->pos == 1){
 			string actions[] = {"1: Go East"};
-			printAction(2, actions);
+			printAction(1, actions);
 			string input;
 			cin >> input;
 			if(input == "1"){
@@ -172,7 +171,7 @@ void GameMode::handleMovement(Room *room){
 
 void GameMode::printAction(int numAction, string actions[]){
 	cout << "Choise next action: \n";
-	for (int i = 0; i = numAction; ++i){
+	for (int i = 0; i < numAction; ++i){
 		cout << actions[i] << "\n";
 	}
 }

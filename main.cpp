@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "GameMode.h"
 #include "GameCharacter.h"
 #include "Player.h"
@@ -45,5 +46,5 @@ int main(){
 	    break;
 	  }
 	}
-	cout << "Goodbye!";
+	cout << "Exited";
 }

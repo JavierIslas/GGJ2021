@@ -14,7 +14,7 @@ int GameCharacter::takeDamage(int amount){
     if(damage < 0) damage = 0;
 
     currentHealth -= damage;
-    cout << name << " now has " << currentHealth << "Health";
+    cout << name << " now has " << currentHealth << "Health\n";
     return damage;
 }
 
