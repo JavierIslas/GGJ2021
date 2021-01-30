@@ -1,5 +1,8 @@
+#include <iostream>
 #include "GameCharacter.h"
 #include "Room.h"
+
+using namespace std;
 
 #ifndef PLAYER_H
 #define PLAYER_H
@@ -9,7 +12,7 @@ class Player: public GameCharacter{
 public:
     Room *currentRoom;
     Room *previousRoom;
-    vector<Item> inventary;
+    vector<Item> inventory;
 
     Player(string="", int=0, int=0, int=0);
 
@@ -19,7 +22,7 @@ public:
 
     void lootRoom(Room *);
 
-    void chageRoom(Room *);
+    void changeRoom(Room *);
 
 };
 #endif

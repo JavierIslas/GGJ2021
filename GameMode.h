@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 #include "item.h"
 #include "GameCharacter.h"
 #include "Player.h"

@@ -2,7 +2,7 @@
 #include "GameMode.h"
 #include "GameCharacter.h"
 #include "Player.h"
-#include "Item.h"
+#include "item.h"
 #include "Room.h"
 
 int main(){
@@ -33,14 +33,14 @@ int main(){
 	fourthRoomEnemies.push_back(secondEnemy);
 	Room fourthRoom = Room(3, true, vector<Item>(), fourthRoomEnemies);
 	 
-	Dungeon dungeon = Dungeon(player);
-	dungeon.rooms[0] = firstRoom;
-	dungeon.rooms[1] = secondRoom;
-	dungeon.rooms[2] = thirdRoom;
-	dungeon.rooms[3] = fourthRoom;
+	GameMode Map = GameMode(player);
+	Map.Dungeon[0] = firstRoom;
+	Map.Dungeon[1] = secondRoom;
+	Map.Dungeon[2] = thirdRoom;
+	Map.Dungeon[3] = fourthRoom;
 	
 	while (true) {
-	  int result = dungeon.runDungeon();
+	  int result = Map.runDungeon();
 	  if (result == 0) {
 	    break;
 	  }

@@ -1,5 +1,5 @@
 #include "GameMode.h"
-#include <iostreamo>
+#include <iostream>
 #include "Player.h"
 
 GameMode::GameMode(Player gc){
@@ -27,12 +27,12 @@ int GameMode::runDungeon(){
 }
 
 void GameMode::enterRoom(Room *newRoom){
-	if(newRoom.enemies.size() != 0){
+	if(newRoom->enemies.size() != 0){
 		handleEnemieRoom(newRoom);
-	} else (newRoom.items.size() != 0){
+	} else if(newRoom->items.size() != 0){
 		handleLootRoom(newRoom);
 	}else{
-		handleEmptyRoom(newRoom)
+		handleEmptyRoom(newRoom);
 	}
 }
 
@@ -45,7 +45,7 @@ void GameMode::handleEmptyRoom(Room *room){
 		cin >> input;
 		if(input == "1"){
 			return;
-		}else cout << "Invalid choise.\n"
+		}else cout << "Invalid choise.\n";
 	}
 }
 
@@ -61,7 +61,7 @@ void GameMode::handleLootRoom(Room *room){
 			return;
 		} else if(input == "2"){
 			return;
-		} else cout << "Invalid choise.\n"
+		} else cout << "Invalid choise.\n";
 	}
 }
 
@@ -74,18 +74,18 @@ void GameMode::handleEnemieRoom(Room *room){
 		string input;
 		cin >> input;
 		if(input == "1"){
-			handleFightAction(room);
+			handleFightAction(&enemy);
 			return;
 		} else if(input == "2"){
 			player.changeRoom(player.previousRoom);
 			enterRoom(player.currentRoom);
 			return;
-		} else cout << "Invalid choise.\n"
+		} else cout << "Invalid choise.\n";
 	}
 }
 
 void GameMode::handleFightAction(GameCharacter *cE){
-	string actions[] = {"1: Attack " + enemy.name,"2: Retreat"};
+	string actions[] = {"1: Attack " + cE->name,"2: Retreat"};
 	while(true){
 		printAction(2, actions);
 		string input;
@@ -98,10 +98,10 @@ void GameMode::handleFightAction(GameCharacter *cE){
 			player.changeRoom(player.previousRoom);
 			enterRoom(player.currentRoom);
 			return;
-		} else cout << "Invalid choise.\n"
+		} else cout << "Invalid choise.\n";
 
-		if(enemy->bIsDead()){
-			cout << "Enemy defeated " << enemy->name;
+		if(cE->bIsDead()){
+			cout << "Enemy defeated " << cE->name;
 			player.increaseStat(2, 1, 1);
 			player.currentRoom->clearEnemies();
 			return;
@@ -112,6 +112,7 @@ void GameMode::handleFightAction(GameCharacter *cE){
 				cout << "You died";
 				return;
 			}
+		}
 	}
 }
 
@@ -164,13 +165,15 @@ void GameMode::handleMovement(Room *room){
 					player.changeRoom(&Dungeon[2]);
 					return;
 				}
+			}
+		}
 	}
 }
 
 void GameMode::printAction(int numAction, string actions[]){
-	cout << "Choise next action: \n"
+	cout << "Choise next action: \n";
 	for (int i = 0; i = numAction; ++i){
-		cout << actions[i] << "\n"
+		cout << actions[i] << "\n";
 	}
 }
 
@@ -178,7 +181,7 @@ int GameMode::perfomrEndGame(){
 	string actions[] = {"1: Yes", "2: No"};
 	printAction(2, actions);
 	string input;
-	cin << input;
+	cin >> input;
 	if(input == "1"){
 		return 1;
 	}else if(input == "2"){

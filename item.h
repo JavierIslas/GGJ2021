@@ -5,7 +5,7 @@
 
 using namespace std;
 class Item{
-
+public:
     string name;
 
     int health, attack, defence;

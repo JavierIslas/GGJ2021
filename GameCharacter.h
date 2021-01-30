@@ -1,4 +1,7 @@
 #include <string>
+#include <iostream>
+
+using namespace std;
 
 #ifndef GAMECHARACTER_H
 #define GAMECHARACTER_H
@@ -11,7 +14,7 @@ class GameCharacter{
 
         int maxHealth, currentHealth, attack, defence;
 
-        GameCharacter(string, int, int, int, int);
+        GameCharacter(string, int, int, int);
 
         int takeDamage(int);
 

@@ -1,9 +1,9 @@
 #include "GameCharacter.h"
 
-GameCharacter::GameCharacter(string n, int mh, int ch, int a, int d){
+GameCharacter::GameCharacter(string n, int mh, int a, int d){
 	name = n;
-    health = h;
-    currentHealth = h;
+    maxHealth = mh;
+    currentHealth = mh;
     attack = a;
     defence = d;
 }

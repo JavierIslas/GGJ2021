@@ -26,7 +26,7 @@ void Player::lootRoom(Room *room){
 	}
 }
 
-void Player::chageRoom(Room *newRoom){
+void Player::changeRoom(Room *newRoom){
 	previousRoom = currentRoom;
 	currentRoom = newRoom;
 }
